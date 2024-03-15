@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All tests">
+        <test name="Positive Tests">
+            <classes>
+                <class name="tests.uiTests.PositiveTests"/>
+            </classes>
+        </test>
+        <test name="Negative Tests">
+            <classes>
+                <class name="tests.uiTests.NegativeTests"/>
+            </classes>
+        </test>
+    <test name="Smoke tests">
+        <classes>
+            <class name="tests.smoke.EndToEndTests"/>
+        </classes>
+    </test>
+    <test name="Product search field">
+        <classes>
+            <class name="tests.regression.ProductSearchFieldTest"/>
+        </classes>
+    </test>
+    <test name="Add to cart">
+        <classes>
+            <class name="tests.regression.AddToCartTests"/>
+        </classes>
+    </test>
+    <test name="Checking cart">
+        <classes>
+            <class name="tests.regression.CheckingCartTests"/>
+        </classes>
+    </test>
+    <test name="Add address">
+        <classes>
+            <class name="tests.regression.AddAddressTests"/>
+        </classes>
+    </test>
+    <test name="API tests">
+        <classes>
+            <class name="tests.API.OzonTests"/>
+        </classes>
+    </test>
+</suite>

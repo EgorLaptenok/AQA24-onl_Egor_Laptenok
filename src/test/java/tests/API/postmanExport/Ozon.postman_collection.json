@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "22902f7e-1bff-42c2-9cef-5c73052509b1",
+		"name": "Ozon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32865946"
+	},
+	"item": [
+		{
+			"name": "add To Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Successful addition to cart\", function () {",
+							"     pm.expect(pm.response.json().success).to.be.eql(true);",
+							"});",
+							"",
+							"let id = pm.response.json().cart.cartItems[0].id;",
+							"",
+							"pm.collectionVariables.set('id', id)",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n    \"id\":1379765870,\r\n    \"quantity\":1\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/composer-api.bx/_action/addToCart",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"composer-api.bx",
+						"_action",
+						"addToCart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check cart\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].id).to.be.eql(pm.collectionVariables.get(\"id\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/composer-api.bx/_action/summary",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"composer-api.bx",
+						"_action",
+						"summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.collectionVariables.clear();"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/entrypoint-api.bx/page/json/v2?url=%2Fcart%3Fdelete%3D{{id}}%26pos%3D0",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"entrypoint-api.bx",
+						"page",
+						"json",
+						"v2"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "%2Fcart%3Fdelete%3D{{id}}%26pos%3D0"
+						}
+					]
+				},
+				"description": "\nThis HTTP POST request is used to delete an item from the cart by sending a request to the specified endpoint. The request should include the URL parameter with the path to the cart and the ID of the item to be deleted.\n\nThe response to the request includes a status code of 200 and a JSON content type. The response body contains detailed layout information, widget states, browser and client details, user information, tracking payloads, server timing, experiments configuration, and other relevant data.\n\nAdd documentation.\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Check delete cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Body empty\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.empty;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/composer-api.bx/_action/summary",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"composer-api.bx",
+						"_action",
+						"summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clothing catalog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"categories\", function () {\r",
+							"    pm.expect(pm.response.json().data.columns[0].categories[0].title).to.eql(\"Женщинам\");\r",
+							"    pm.expect(pm.response.json().data.columns[0].categories[1].title).to.eql(\"Мужчинам\");\r",
+							"    pm.expect(pm.response.json().data.columns[1].categories[0].title).to.be.eql(\"Детям\");\r",
+							"    pm.expect(pm.response.json().data.columns[1].categories[1].title).to.be.eql(\"Униформа и рабочая одежда\");\r",
+							"    pm.expect(pm.response.json().data.columns[2].categories[0].title).to.be.eql(\"Уход за одеждой\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}api/composer-api.bx/_action/v2/categoryChildV3?menuId=185&categoryId=7500&hash=",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"composer-api.bx",
+						"_action",
+						"v2",
+						"categoryChildV3"
+					],
+					"query": [
+						{
+							"key": "menuId",
+							"value": "185"
+						},
+						{
+							"key": "categoryId",
+							"value": "7500"
+						},
+						{
+							"key": "hash",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

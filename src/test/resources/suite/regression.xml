@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression tests">
+    <test name="Product search field">
+        <classes>
+            <class name="tests.regression.ProductSearchFieldTest"/>
+        </classes>
+    </test>
+    <test name="Add to cart">
+        <classes>
+            <class name="tests.regression.AddToCartTests"/>
+        </classes>
+    </test>
+    <test name="Checking cart">
+        <classes>
+            <class name="tests.regression.CheckingCartTests"/>
+        </classes>
+    </test>
+    <test name="Add address">
+        <classes>
+            <class name="tests.regression.AddAddressTests"/>
+        </classes>
+    </test>
+</suite>
