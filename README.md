@@ -1,5 +1,5 @@
 # AQA24-onl_Egor_Laptenok
-# Выпускная работа
+# Дипломная работа
 ## Общий фреймворк автоматизации
 Этот проект представляет собой общий фреймворк автоматизации, использующий Selenium, TestNG и Maven.
 
@@ -38,7 +38,6 @@ mvn clean test -Dsuite=api -Dconfig=tests
 - Selenium: фреймворк для автоматизации веб-приложений.
 - TestNG: фреймворк для написания и выполнения автоматизированных тестов.
 - Maven: инструмент для управления зависимостями и сборки проекта.
-- Selenium: автоматизация веб-браузера.
 - Log4j Core: логирование событий.
 - Log4j: логирование сообщений.
 - Lombok: упрощение кода.
@@ -46,5 +45,6 @@ mvn clean test -Dsuite=api -Dconfig=tests
 - Rest Assured: тестирование API.
 - Allure: генерация отчетов.
 
-### Презентация
-Ссылка на презентацию: [https://docs.google.com/presentation/d/1N__rM81H2HEeVmErAjJLZchm8Z4lLPy79wyLzEk7LbA/edit?usp=sharing]
+### Ссылки
+Ссылка на презентацию :: [https://docs.google.com/presentation/d/1N__rM81H2HEeVmErAjJLZchm8Z4lLPy79wyLzEk7LbA/edit?usp=sharing],
+Ссылка на чек-лист :: [https://docs.google.com/spreadsheets/d/1Sbyr9BoL0sRt2hn0XzOfuMIYtQ6uDbiF5BgZgw2g7a0/edit?usp=sharing]
